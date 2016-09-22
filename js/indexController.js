@@ -1,8 +1,8 @@
 myApp.controller("indexController",function($scope,$http) {
 	$scope.logined = 0;
 	$scope.login = function() {
-		$scope.userName = document.getElementById("userName");
-		$scope.password = document.getElementById("password");
+		$scope.userName = document.getElementById("userName").value;
+		$scope.password = document.getElementById("password").value;
 		if($scope.userName == undefined || $scope.userName =="") {
 			alert("请输入用户名");
 			return;
@@ -12,8 +12,8 @@ myApp.controller("indexController",function($scope,$http) {
 			return;
 		}
 		var formData = new FormData();
-	    formData.append('userName', userName);
-	    formData.append("password",password);
+	    formData.append('userName', $scope.userName);
+	    formData.append("password",$scope.password);
 		$http({
 			url:'http://182.92.226.65:8080/GXBike/api/user/login',
 			method:'POST',
